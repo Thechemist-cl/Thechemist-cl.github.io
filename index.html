@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastCash - Quick Online Loans</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>FastCash</h1>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#apply-now" class="btn">Apply Now</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#apply-now">Apply Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Access Funds Up To Ksh 60,000</h2>
+                    <p class="highlight">Limited Time Offer!</p>
+                    <h3>Secure financing with competitive rates starting at 7.8% APR</h3>
+                    <p>Available for eligible applicants meeting our simple criteria</p>
+                    <a href="#apply-now" class="btn">Begin Application</a>
+                </div>
+                <div class="hero-image">
+                    <img src="hc.jpeg" alt="Happy customer with money">
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Why Choose FastCash?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Rapid Processing</h3>
+                        <p>Receive a preliminary decision within minutes through our efficient online system</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Customizable Durations</h3>
+                        <p>Select repayment periods ranging from 1 to 3 months to suit your financial situation</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Convenience</h3>
+                        <p>Download our app for seamless account management and payment tracking</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="process">
+            <div class="container">
+                <h2>Simple Application Journey</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Complete Our Form</h3>
+                        <p>Fill out our straightforward online application with basic personal and financial details</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Instant Preliminary Review</h3>
+                        <p>Our system evaluates your information immediately after submission</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Receive Your Funds</h3>
+                        <p>Approved amounts are deposited directly to your account within hours</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="apply-now" class="application">
+            <div class="container">
+                <h2>Begin Your Application</h2>
+                <form id="loan-form">
+                    <div class="form-group">
+                        <label for="amount">Desired Loan Amount (Ksh)</label>
+                        <input type="number" id="amount" min="1000" max="60000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="term">Preferred Repayment Period (days)</label>
+                        <select id="term" required>
+                            <option value="">Select term</option>
+                            <option value="30">30 days</option>
+                            <option value="60">60 days</option>
+                            <option value="90">90 days</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Mobile Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email">
+                    </div>
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I accept the <a href="#">Terms & Conditions</a> and agree to receive communications regarding my application</label>
+                    </div>
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="marketing">
+                        <label for="marketing">I'd like to receive information about future financial products</label>
+                    </div>
+                    <button type="submit" class="btn">Submit Application</button>
+                </form>
+                <div class="app-promo">
+                    <p>For better experience, install our mobile application</p>
+                    <div class="app-badges">
+                        <a href="#"><img src="https://via.placeholder.com/150x50" alt="Download on App Store"></a>
+                        <a href="#"><img src="https://via.placeholder.com/150x50" alt="Get it on Google Play"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FastCash</h3>
+                    <p>Providing quick financial solutions when you need them most</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#apply-now">Apply Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Rates & Fees</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +254 700 123456</li>
+                        <li><i class="fas fa-envelope"></i> support@fastcash.co.ke</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FastCash. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2>Application Received!</h2>
+            <p>We've successfully received your loan request. Our team will review your application and contact you shortly.</p>
+            <p>For faster processing, download our mobile app to track your application status.</p>
+            <div class="modal-buttons">
+                <button class="btn" id="download-app">Download App</button>
+                <button class="btn secondary" id="close-success">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

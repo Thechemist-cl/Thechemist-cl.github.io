@@ -7,9 +7,15 @@
     <link rel="icon" href="icon.ico">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add these in your <head> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.0/bcrypt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
+
 </head>
 <body>
-    <!-- Added a sneaky comment -->
     <header>
         <div class="container">
             <div class="logo">
@@ -19,18 +25,19 @@
                 <ul>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#apply-now" class="btn">Apply Now</a></li>
+                    <li><a class="btn" href="#apply-now">Apply Now</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+
         <nav class="mobile-nav">
             <ul>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#apply-now">Apply Now</a></li>
+                <li><a href="#apply-now" class="btn">Apply Now</a></li>
             </ul>
         </nav>
     </header>
@@ -100,11 +107,22 @@
         <section id="apply-now" class="application">
             <div class="container">
                 <h2>Begin Your Application</h2>
+
                 <form id="loan-form">
-                    <div class="form-group">
-                        <label for="amount">Desired Loan Amount (Ksh)</label>
-                        <input type="number" id="amount" min="1000" max="60000" required>
-                    </div>
+
+                     <div class="form-group">
+                       <label for="phone">M-Pesa Number*</label>
+                       <input type="tel" id="phone" required placeholder="07xxxxxxxx">
+                       <div class="error-message"></div>
+                     </div>
+                     
+                     <div class="form-group">
+                       <label for="amount">Loan Amount (Ksh)*</label>
+                       <input type="number" id="amount" min="1" max="50000" required>
+                       <div class="error-message"></div>
+                       <small id="savings-requirement" class="text-muted"></small>
+                     </div>
+                     
                     <div class="form-group">
                         <label for="term">Preferred Repayment Period (days)</label>
                         <select id="term" required>
@@ -114,38 +132,122 @@
                             <option value="90">90 days</option>
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" placeholder="Raphael Macharia" required>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">Mobile Number</label>
-                        <input type="tel" id="phone" required>
-                    </div>
+
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email">
+                        <input type="email" id="email" placeholder="youremail@gmail.com" required>
                     </div>
-                    <div class="form-group checkbox">
-                        <input type="checkbox" id="terms" required>
-                        <label for="terms">I accept the <a href="#">Terms & Conditions</a> and agree to receive communications regarding my application</label>
-                    </div>
+
+                     <div class="form-group checkbox">
+                       <input type="checkbox" id="terms" required disabled>
+                       <label for="terms">I have read and agree to the <a href="#terms">Terms & Conditions</a></label>
+                     </div>
+
                     <div class="form-group checkbox">
                         <input type="checkbox" id="marketing">
                         <label for="marketing">I'd like to receive information about future financial products</label>
                     </div>
+
                     <button type="submit" class="btn">Submit Application</button>
+
                 </form>
+
                 <div class="app-promo">
                     <p>For better experience, install our mobile application</p>
+
                     <div class="app-badges">
                         <a href="#"><img src="https://via.placeholder.com/150x50" alt="Download on App Store"></a>
                         <a href="#"><img src="https://via.placeholder.com/150x50" alt="Get it on Google Play"></a>
                     </div>
+
                 </div>
+
             </div>
+
         </section>
     </main>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+            </div>
+            
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-phone">M-Pesa Number</label>
+                    <input type="tel" id="login-phone" pattern="07\d{8}" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-phone">M-Pesa Number</label>
+                    <input type="tel" id="signup-phone" pattern="07\d{8}" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-national-id">National ID</label>
+                    <input type="text" id="signup-national-id" pattern="\d{8,9}" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email (Optional)</label>
+                    <input type="email" id="signup-email">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" minlength="6" required>
+                </div>
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loan Application Form (initially hidden) -->
+    <section id="loan-application" style="display:none;">
+        <div class="container">
+            <h2>Complete Your Loan Application</h2>
+            <form id="loan-form">
+                <div class="user-info">
+                    <p>Applying as: <span id="user-full-name"></span></p>
+                    <p>Phone: <span id="user-phone"></span></p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loan-amount">Loan Amount (Ksh)</label>
+                    <input type="number" id="loan-amount" min="100" max="50000" required>
+                    <div class="savings-info" id="savings-info"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loan-term">Repayment Period</label>
+                    <select id="loan-term" required>
+                        <option value="30">30 Days</option>
+                        <option value="60">60 Days</option>
+                        <option value="90">90 Days</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn">Submit Application</button>
+            </form>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
@@ -204,7 +306,34 @@
             </div>
         </div>
     </div>
+		
+    <!-- Add this modal before the closing </body> tag -->
+    <div class="modal" id="terms-modal">
+      <div class="modal-content">
+        <h2>Loan Terms & Conditions</h2>
+        <div class="terms-content">
+          <ol>
+            <li>You must have saved at least 30% of the loan amount with us to be eligible.</li>
+            <li>No refunds - You must deposit with us before requesting any loan.</li>
+            <li>Interest rate: 14% per annum.</li>
+            <li>Our agents will contact you for repayments after 5 weeks.</li>
+            <li>Maximum borrowing limit: Ksh 50,000.</li>
+            <li>Payments only accepted via M-Pesa.</li>
+            <li>Default clause: Failure to repay within 60 days will result in legal action.</li>
+            <li>Late payment penalties: 5% of due amount per week after due date.</li>
+            <li>All loans must be repaid within 90 days maximum.</li>
+            <li>We reserve the right to adjust repayment schedules based on circumstances.</li>
+          </ol>
+        </div>
+        <div class="modal-buttons">
+          <button class="btn" id="agree-terms">I Agree</button>
+          <button class="btn secondary" id="decline-terms">Decline</button>
+        </div>
+      </div>
+    </div>
 
-    <script src="script.js"></script>
+    <script src="script.js"> </script>
+    <script src="database.js"> </script>
+
 </body>
 </html>

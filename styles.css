@@ -494,6 +494,92 @@ footer {
     background-color: #5a6268;
 }
 
+/* Terms Modal Specific Styles */
+.terms-content {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 5px;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+}
+
+.terms-content ol {
+  padding-left: 20px;
+}
+
+.terms-content li {
+  margin-bottom: 10px;
+}
+
+/* Validation Error Styles */
+.error-message {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: none;
+}
+
+.input-error {
+  border-color: #dc3545 !important;
+}
+
+/* Disabled Terms Checkbox */
+#terms:disabled + label {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Auth Modal Styles */
+.auth-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.auth-tab {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.auth-tab.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.user-info {
+    background: #f5f7fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.savings-info {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.savings-info.valid {
+    color: var(--success-color);
+}
+
+.savings-info.invalid {
+    color: var(--secondary-color);
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
     .hero-content {
